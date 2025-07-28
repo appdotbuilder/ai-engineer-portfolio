@@ -64,7 +64,7 @@ function App() {
     const timer = setTimeout(() => {
       setShowContent(true);
       setIsLoading(false);
-    }, 1000); // Show content after 1 second regardless of API status
+    }, 500); // Show content after 500ms regardless of API status
     
     return () => clearTimeout(timer);
   }, []);
@@ -76,13 +76,6 @@ function App() {
         <div className="fixed inset-0 overflow-hidden pointer-events-none">
           <div className="stars absolute inset-0"></div>
           <div className="twinkling absolute inset-0"></div>
-          
-          {/* Animated space elements for loading */}
-          <div className="space-rockets">
-            <div className="rocket">🚀</div>
-            <div className="rocket">🛸</div>
-            <div className="rocket">🚀</div>
-          </div>
         </div>
         
         <div className="text-center relative z-10">
@@ -101,13 +94,6 @@ function App() {
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="stars absolute inset-0"></div>
         <div className="twinkling absolute inset-0"></div>
-        
-        {/* Animated space elements */}
-        <div className="space-rockets">
-          <div className="rocket">🚀</div>
-          <div className="rocket">🛸</div>
-          <div className="rocket">🚀</div>
-        </div>
       </div>
       
       <div className="relative z-10">
