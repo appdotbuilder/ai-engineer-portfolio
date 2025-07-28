@@ -1,8 +1,19 @@
 
+import { db } from '../db';
+import { experienceTable } from '../db/schema';
 import { type Experience } from '../schema';
+import { desc } from 'drizzle-orm';
 
 export const getExperience = async (): Promise<Experience[]> => {
-  // This is a placeholder declaration! Real code should be implemented here.
-  // The goal of this handler is fetching all experience entries from the database, ordered by start_date (most recent first).
-  return [];
+  try {
+    const results = await db.select()
+      .from(experienceTable)
+      .orderBy(desc(experienceTable.start_date))
+      .execute();
+
+    return results;
+  } catch (error) {
+    console.error('Experience retrieval failed:', error);
+    throw error;
+  }
 };

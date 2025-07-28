@@ -1,9 +1,22 @@
 
+import { db } from '../db';
+import { projectsTable } from '../db/schema';
 import { type Project } from '../schema';
+import { desc, asc } from 'drizzle-orm';
 
 export const getProjects = async (): Promise<Project[]> => {
-  // This is a placeholder declaration! Real code should be implemented here.
-  // The goal of this handler is fetching all projects from the database, ordered by display_order and creation date.
-  // Should return featured projects first, then regular projects.
-  return [];
+  try {
+    const results = await db.select()
+      .from(projectsTable)
+      .orderBy(desc(projectsTable.featured), asc(projectsTable.display_order), asc(projectsTable.created_at))
+      .execute();
+
+    return results.map(project => ({
+      ...project,
+      technologies: project.technologies as string[] // Ensure proper type for jsonb field
+    }));
+  } catch (error) {
+    console.error('Failed to fetch projects:', error);
+    throw error;
+  }
 };
