@@ -64,60 +64,68 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
   return (
     <section id="experience" className="py-20">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
               🌟 Experience Journey
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-gray-300 mb-2">
               Building the future, one algorithm at a time
             </p>
+            <div className="flex items-center justify-center space-x-2 text-gray-500 text-sm">
+              <span>🚀</span>
+              <span>Navigate through my professional voyage</span>
+              <span>🛰️</span>
+            </div>
           </div>
 
-          <div className="space-y-8">
+          {/* Responsive Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {displayExperience.map((exp: Experience, index: number) => (
               <Card 
                 key={exp.id} 
-                className="bg-gray-900/50 border-gray-700 hover:border-purple-500 transition-all duration-300 glow-purple"
+                className="experience-card bg-gray-900/50 border-gray-700 hover:border-purple-500 transition-all duration-300 glow-purple h-full flex flex-col"
               >
-                <CardHeader>
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-2xl text-white flex items-center">
-                        <span className="mr-3">{index === 0 ? '🚀' : index === 1 ? '⚡' : '🔬'}</span>
-                        {exp.position}
-                      </CardTitle>
-                      <p className="text-lg text-blue-400 font-semibold mt-1">
-                        {exp.company}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-gray-300 font-medium">
-                        {getDateRange(exp.start_date, exp.end_date)}
-                      </p>
-                      {exp.location && (
-                        <p className="text-gray-400 text-sm">
-                          📍 {exp.location}
+                <CardHeader className="pb-4">
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <CardTitle className="text-xl text-white flex items-center mb-2">
+                          <span className="mr-2 text-2xl">{index === 0 ? '🚀' : index === 1 ? '⚡' : '🔬'}</span>
+                          <span className="leading-tight">{exp.position}</span>
+                        </CardTitle>
+                        <p className="text-lg text-blue-400 font-semibold">
+                          {exp.company}
                         </p>
-                      )}
+                      </div>
+                      <div className="text-right flex-shrink-0 ml-4">
+                        <p className="text-gray-300 font-medium text-sm">
+                          {getDateRange(exp.start_date, exp.end_date)}
+                        </p>
+                        {exp.location && (
+                          <p className="text-gray-400 text-xs mt-1">
+                            📍 {exp.location}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-gray-300 leading-relaxed text-lg">
+                <CardContent className="flex-1 flex flex-col justify-between space-y-4">
+                  <p className="text-gray-300 leading-relaxed text-base flex-1">
                     {exp.description}
                   </p>
                   
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-400 mb-2 uppercase tracking-wide">
+                    <h4 className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">
                       Technologies Used
                     </h4>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1">
                       {exp.technologies.map((tech: string, techIndex: number) => (
                         <Badge 
                           key={techIndex} 
                           variant="secondary" 
-                          className="bg-purple-950/50 text-purple-300 border-purple-700"
+                          className="bg-purple-950/50 text-purple-300 border-purple-700 text-xs px-2 py-1"
                         >
                           {tech}
                         </Badge>
