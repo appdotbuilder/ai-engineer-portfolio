@@ -1,6 +1,5 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import type { Skill } from '../../../server/src/schema';
 
@@ -156,9 +155,54 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
     return colors[category] || 'gray';
   };
 
-  const getProficiencyText = (level: number) => {
-    const levels = ['Beginner', 'Novice', 'Intermediate', 'Advanced', 'Expert'];
-    return levels[level - 1] || 'Unknown';
+  const getSkillIcon = (skillName: string) => {
+    const skillIcons: Record<string, string> = {
+      // Programming Languages
+      'Python': '🐍',
+      'JavaScript': '🟨',
+      'TypeScript': '🔵',
+      'Java': '☕',
+      'C++': '⚙️',
+      'Go': '🐹',
+      'Rust': '🦀',
+      'R': '📊',
+      'SQL': '🗃️',
+      
+      // AI/ML
+      'Machine Learning': '🤖',
+      'Deep Learning': '🧠',
+      'Computer Vision': '👁️',
+      'Natural Language Processing': '💬',
+      
+      // Frameworks
+      'PyTorch': '🔥',
+      'TensorFlow': '🟠',
+      'React': '⚛️',
+      'Vue': '💚',
+      'Angular': '🔺',
+      'Django': '🎸',
+      'Flask': '🌶️',
+      'FastAPI': '⚡',
+      
+      // DevOps & Cloud
+      'Docker': '🐳',
+      'Kubernetes': '☸️',
+      'AWS': '☁️',
+      'GCP': '🌥️',
+      'Azure': '🌐',
+      
+      // Databases
+      'PostgreSQL': '🐘',
+      'MongoDB': '🍃',
+      'Redis': '🔴',
+      
+      // Tools
+      'Git': '📝',
+      'Linux': '🐧',
+      'Tableau': '📈'
+    };
+    
+    return skillIcons[skillName] || '⭐';
   };
 
   return (
@@ -186,38 +230,30 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
                     {category}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4">
                   {categorySkills
-                    .sort((a: Skill, b: Skill) => b.proficiency_level - a.proficiency_level)
+                    .sort((a: Skill, b: Skill) => a.display_order - b.display_order)
                     .map((skill: Skill) => (
-                      <div key={skill.id} className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-gray-200 font-medium">{skill.name}</span>
-                          <Badge 
-                            variant="secondary" 
-                            className={`
-                              ${getCategoryColor(category) === 'blue' ? 'bg-blue-950/50 text-blue-300 border-blue-700' : ''}
-                              ${getCategoryColor(category) === 'purple' ? 'bg-purple-950/50 text-purple-300 border-purple-700' : ''}
-                              ${getCategoryColor(category) === 'cyan' ? 'bg-cyan-950/50 text-cyan-300 border-cyan-700' : ''}
-                              ${getCategoryColor(category) === 'green' ? 'bg-green-950/50 text-green-300 border-green-700' : ''}
-                              ${getCategoryColor(category) === 'yellow' ? 'bg-yellow-950/50 text-yellow-300 border-yellow-700' : ''}
-                              ${getCategoryColor(category) === 'orange' ? 'bg-orange-950/50 text-orange-300 border-orange-700' : ''}
-                              ${getCategoryColor(category) === 'pink' ? 'bg-pink-950/50 text-pink-300 border-pink-700' : ''}
-                              text-xs
-                            `}
-                          >
-                            {getProficiencyText(skill.proficiency_level)}
-                          </Badge>
+                      <div key={skill.id} className="flex items-center space-x-3 p-3 rounded-lg bg-gray-800/30 hover:bg-gray-800/50 transition-colors">
+                        <span className="text-2xl flex-shrink-0">{getSkillIcon(skill.name)}</span>
+                        <div className="flex-1">
+                          <span className="text-gray-200 font-medium text-base">{skill.name}</span>
                         </div>
-                        <Progress 
-                          value={skill.proficiency_level * 20} 
-                          className="h-2"
-                        />
-                        <div className="flex justify-end">
-                          <span className="text-xs text-gray-400">
-                            {skill.proficiency_level}/5
-                          </span>
-                        </div>
+                        <Badge 
+                          variant="secondary" 
+                          className={`
+                            ${getCategoryColor(category) === 'blue' ? 'bg-blue-950/50 text-blue-300 border-blue-700' : ''}
+                            ${getCategoryColor(category) === 'purple' ? 'bg-purple-950/50 text-purple-300 border-purple-700' : ''}
+                            ${getCategoryColor(category) === 'cyan' ? 'bg-cyan-950/50 text-cyan-300 border-cyan-700' : ''}
+                            ${getCategoryColor(category) === 'green' ? 'bg-green-950/50 text-green-300 border-green-700' : ''}
+                            ${getCategoryColor(category) === 'yellow' ? 'bg-yellow-950/50 text-yellow-300 border-yellow-700' : ''}
+                            ${getCategoryColor(category) === 'orange' ? 'bg-orange-950/50 text-orange-300 border-orange-700' : ''}
+                            ${getCategoryColor(category) === 'pink' ? 'bg-pink-950/50 text-pink-300 border-pink-700' : ''}
+                            text-xs px-2 py-1
+                          `}
+                        >
+                          {category}
+                        </Badge>
                       </div>
                     ))}
                 </CardContent>

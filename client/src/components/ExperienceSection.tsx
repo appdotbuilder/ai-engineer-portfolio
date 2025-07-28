@@ -86,24 +86,24 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
                 key={exp.id} 
                 className="experience-card bg-gray-900/50 border-gray-700 hover:border-purple-500 transition-all duration-300 glow-purple h-full flex flex-col"
               >
-                <CardHeader className="pb-4">
-                  <div className="flex flex-col gap-3">
+                <CardHeader className="pb-3 px-6 pt-6">
+                  <div className="flex flex-col gap-4">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <CardTitle className="text-xl text-white flex items-center mb-2">
-                          <span className="mr-2 text-2xl">{index === 0 ? '🚀' : index === 1 ? '⚡' : '🔬'}</span>
+                        <CardTitle className="text-2xl text-white flex items-center mb-3 font-bold">
+                          <span className="mr-3 text-2xl">{index === 0 ? '🚀' : index === 1 ? '⚡' : '🔬'}</span>
                           <span className="leading-tight">{exp.position}</span>
                         </CardTitle>
-                        <p className="text-lg text-blue-400 font-semibold">
+                        <p className="text-xl text-blue-400 font-bold mb-1">
                           {exp.company}
                         </p>
                       </div>
-                      <div className="text-right flex-shrink-0 ml-4">
-                        <p className="text-gray-300 font-medium text-sm">
+                      <div className="text-right flex-shrink-0 ml-6">
+                        <p className="text-gray-200 font-semibold text-sm mb-1">
                           {getDateRange(exp.start_date, exp.end_date)}
                         </p>
                         {exp.location && (
-                          <p className="text-gray-400 text-xs mt-1">
+                          <p className="text-gray-400 text-xs">
                             📍 {exp.location}
                           </p>
                         )}
@@ -111,21 +111,23 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="flex-1 flex flex-col justify-between space-y-4">
-                  <p className="text-gray-300 leading-relaxed text-base flex-1">
-                    {exp.description}
-                  </p>
+                <CardContent className="flex-1 flex flex-col justify-between pt-2 pb-6 px-6">
+                  <div className="mb-6">
+                    <p className="text-gray-300 leading-relaxed text-base mb-4">
+                      {exp.description}
+                    </p>
+                  </div>
                   
-                  <div>
-                    <h4 className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">
+                  <div className="space-y-3">
+                    <h4 className="text-xs font-semibold text-gray-400 mb-3 uppercase tracking-wide">
                       Technologies Used
                     </h4>
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-2">
                       {exp.technologies.map((tech: string, techIndex: number) => (
                         <Badge 
                           key={techIndex} 
                           variant="secondary" 
-                          className="bg-purple-950/50 text-purple-300 border-purple-700 text-xs px-2 py-1"
+                          className="bg-purple-900/40 text-purple-200 border-purple-600/50 text-xs px-3 py-1 hover:bg-purple-800/50 transition-colors"
                         >
                           {tech}
                         </Badge>
