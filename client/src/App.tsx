@@ -77,39 +77,11 @@ function App() {
           <div className="stars absolute inset-0"></div>
           <div className="twinkling absolute inset-0"></div>
           
-          {/* Animated space elements for loading - layered for depth */}
-          <div className="space-rockets space-layer-1">
+          {/* Animated space elements for loading */}
+          <div className="space-rockets">
             <div className="rocket">🚀</div>
             <div className="rocket">🛸</div>
             <div className="rocket">🚀</div>
-          </div>
-          
-          <div className="space-planets space-layer-2">
-            <div className="planet">🪐</div>
-            <div className="planet">🌍</div>
-            <div className="planet">🌙</div>
-          </div>
-          
-          <div className="space-ships space-layer-1">
-            <div className="ship">🛰️</div>
-            <div className="ship">🚁</div>
-          </div>
-          
-          <div className="space-satellites space-layer-3">
-            <div className="satellite">📡</div>
-            <div className="satellite">🛰️</div>
-          </div>
-          
-          <div className="space-comets space-layer-2">
-            <div className="comet">☄️</div>
-            <div className="comet">💫</div>
-            <div className="comet">✨</div>
-          </div>
-          
-          <div className="space-asteroids space-layer-3">
-            <div className="asteroid">🌑</div>
-            <div className="asteroid">🌑</div>
-            <div className="asteroid">🌑</div>
           </div>
         </div>
         
@@ -130,39 +102,11 @@ function App() {
         <div className="stars absolute inset-0"></div>
         <div className="twinkling absolute inset-0"></div>
         
-        {/* Animated space elements - layered for depth */}
-        <div className="space-rockets space-layer-1">
+        {/* Animated space elements */}
+        <div className="space-rockets">
           <div className="rocket">🚀</div>
           <div className="rocket">🛸</div>
           <div className="rocket">🚀</div>
-        </div>
-        
-        <div className="space-planets space-layer-2">
-          <div className="planet">🪐</div>
-          <div className="planet">🌍</div>
-          <div className="planet">🌙</div>
-        </div>
-        
-        <div className="space-ships space-layer-1">
-          <div className="ship">🛰️</div>
-          <div className="ship">🚁</div>
-        </div>
-        
-        <div className="space-satellites space-layer-3">
-          <div className="satellite">📡</div>
-          <div className="satellite">🛰️</div>
-        </div>
-        
-        <div className="space-comets space-layer-2">
-          <div className="comet">☄️</div>
-          <div className="comet">💫</div>
-          <div className="comet">✨</div>
-        </div>
-        
-        <div className="space-asteroids space-layer-3">
-          <div className="asteroid">🌑</div>
-          <div className="asteroid">🌑</div>
-          <div className="asteroid">🌑</div>
         </div>
       </div>
       
